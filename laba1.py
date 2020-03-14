@@ -1,5 +1,13 @@
 import math
-arr = list(range(100))
+arr = []   
+n = int(input("Enter number of elements : "))  
+for i in range(0, n): 
+    ele = int(input()) 
+    arr.append(ele) # adding the element 
+    
+st = int(input("Enter the first element:"))
+fin = int(input("Enter the last element:"))
+
 
 #razbienie na summy podmassivov
 def devision(ar, leng):
@@ -35,4 +43,9 @@ def check(ar, st, fi, leng):
 def division(ar, st, fi):
     leng = math.ceil(len(ar)**0.5) 
     return check(ar, st, fi, leng)
-print(division(arr, 55, 71))
+
+print(division(arr, st, fin))
+    
+   
+
+    
