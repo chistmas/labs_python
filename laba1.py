@@ -25,7 +25,7 @@ def devision(ar, leng):
 #summa s 0-go elementa do poslednego zadannogo
 def big_summa(ar, fi, leng):
     spis = 0
-    i = 0
+    i = math.floor(st/leng)
     while i + leng <= fi and i % leng == 0:
         spis += devision(ar, leng)[math.floor(i / leng)]
         i += leng
