@@ -34,37 +34,42 @@ def check(ar, st, fi, leng):
 def division(ar, st, fi):
     leng = math.ceil(len(ar)**0.5) 
     return check(ar, st, fi, leng)
-
-arr = []   
-z = int(input("Choose how to input data: \n1 -- from text.txt\n2 -- manually\n"))
-if z == 1:
-    f = open('text.txt', 'r+')
-    ff=f.read()
-    ff = ff.replace(",","")
-    ff = ff.replace("\n", " ")
-    ff = ff.replace("["," ")
-    ff = ff.replace("]", " ")
-    ff = ff.split()
-    st = int(ff[-2])
-    fin = int(ff[-1])
-    arra = ff[:-2]
-    arr = []
-    for i in range(len(arra)):
-        t = int(arra[i])
-        arr.append(t)
-    f.close()
-
-elif z == 2:
-    n = int(input("Enter number of elements : "))  
-    for i in range(0, n): 
-        ele = int(input()) 
-        arr.append(ele) 
-    st = int(input("Enter the first element:"))
-    fin = int(input("Enter the last element:"))
-else:
-    print("You've chosen something wrong -_-")
-
-print(division(arr, st, fin))
+z = 1
+while z != 3:
+    arr = []   
+    print("Choose how to input data: \n1 -- from text.txt\n2 -- manually")
+    z = int(input("3 -- exit\n"))
+    if z == 1:
+        f = open('text.txt', 'r+')
+        ff=f.read()
+        ff = ff.replace(",","")
+        ff = ff.replace("\n", " ")
+        ff = ff.replace("["," ")
+        ff = ff.replace("]", " ")
+        ff = ff.split()
+        st = int(ff[-2])
+        fin = int(ff[-1])
+        arra = ff[:-2]
+        arr = []
+        for i in range(len(arra)):
+            t = int(arra[i])
+            arr.append(t)
+        f.close()
+        print(division(arr, st, fin))
+        print("")
+    elif z == 2:
+        n = int(input("Enter number of elements : "))  
+        for i in range(0, n): 
+            ele = int(input()) 
+            arr.append(ele) 
+        st = int(input("Enter the first element:"))
+        fin = int(input("Enter the last element:"))
+        print(division(arr, st, fin))
+        print("")
+    else:
+        print("You've chosen something wrong -_-\n")
+    
+    
     
    
 
