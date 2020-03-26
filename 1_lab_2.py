@@ -2,6 +2,17 @@ import random
 import string
 import sys
 
+def printProgressBar (iter, total, pref = '', suf = '', dec = 1,
+                      leng = 100, fill = '█', printEnd = "\r"):
+    
+    percent = ("{0:." + str(dec) + "f}").format(100 * (iter / float(total)))
+    filledLength = int(leng * iter // total)
+    bar = fill * filledLength + '-' * (leng - filledLength)
+    print('\r%s |%s| %s%% %s' % (pref, bar, percent, suf), end = printEnd)
+    # Print New Line on Complete
+    if iter == total: 
+        print()
+        
 if __name__ == "__main__":
     d = int(input("1--Enter manually \n2--No\n"))
     slova = []
@@ -29,8 +40,12 @@ if __name__ == "__main__":
     f= open("filee.txt","w+")
     alphabet = list(string.ascii_letters)
     text = ""
-
+    l = len(list(range(razmer*1000*1000)))
+    printProgressBar(0, l, pref = 'Progress:', suf = 'Complete',
+                             leng = 50)
     while i < razmer * 1000 * 1000:
+        printProgressBar(i, l, pref = 'Progress:', suf = 'Complete',
+                         leng = 50)
         stroka = random.choice(slova)
         for j in list(range(stroka)):
             slovo = random.choice(bukvy)
