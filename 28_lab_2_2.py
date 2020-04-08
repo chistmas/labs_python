@@ -24,6 +24,10 @@ if __name__ == "__main__":
         razmer = int(input("Size?:\n"))
         a = (a.replace(",", "")).split()
         b = (b.replace(",", "")).split()
+        a = (a.replace("[", "")).split()
+        b = (b.replace("[", "")).split()
+        a = (a.replace("]", "")).split()
+        b = (b.replace("]", "")).split()
         for i in range(2):
             t = int(a[i])
             z = int(b[i])
