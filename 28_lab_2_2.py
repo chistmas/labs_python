@@ -3,7 +3,7 @@ import string
 import sys
 
 
-def printProgressBar(iter, total, pref='', suf='', dec=1,
+def ProgressBar(iter, total, pref='', suf='', dec=1,
                      leng=100, fill='█', printEnd="\r"):
     percent = ("{0:." + str(dec) + "f}").format(100 * (iter / float(total)))
     filledLength = int(leng * iter // total)
@@ -15,10 +15,9 @@ def printProgressBar(iter, total, pref='', suf='', dec=1,
 
 
 if __name__ == "__main__":
-    d = int(input("1--Enter manually \n2--No\n"))
     slova = []
     bukvy = []
-    if d == 1:
+    if len(sys.argv) == 1:
         a = input("How many words:\n")
         b = input("How many letters:\n")
         razmer = int(input("Size?:\n"))
@@ -33,24 +32,23 @@ if __name__ == "__main__":
             z = int(b[i])
             slova.append(t)
             bukvy.append(z)
-    elif d == 2:
+    else:
         for i in range(2):
             slova.append(int(sys.argv[1 + i]))
             bukvy.append(int(sys.argv[3 + i]))
             razmer = int(sys.argv[5])
-    else:
-        print("Your choice was wrong!!!")
-
+    
+    son = 0
     i = 0
-    f = open("filee.txt", "w+")
     alphabet = list(string.ascii_letters)
     text = ""
     l = len(list(range(razmer * 1000 * 1000)))
-    printProgressBar(0, l, pref='Progress:', suf='Complete',
+    ProgressBar(0, l, pref='Progress:', suf='Complete',
                      leng=50)
     dlina = razmer * 1000000
     while i < dlina:
-        printProgressBar(i, l, pref='Progress:', suf='Complete',
+        f = open("filee.txt", "a+")
+        ProgressBar(i, l, pref='Progress:', suf='Complete',
                          leng=50)
         stroka = random.choice(slova)
         for j in list(range(stroka)):
@@ -76,5 +74,8 @@ if __name__ == "__main__":
 
         text += "\n"
         i += 2
-    f.write(text)
-    f.close()
+        b = i - son
+        if b > 300000000:
+            f.write(text)
+            f.close()
+            son += i
