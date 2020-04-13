@@ -46,8 +46,8 @@ if __name__ == "__main__":
     ProgressBar(0, l, pref='Progress:', suf='Complete',
                      leng=50)
     dlina = razmer * 1000000
+    f = open("filee.txt", "a+")
     while i < dlina:
-        f = open("filee.txt", "a+")
         ProgressBar(i, l, pref='Progress:', suf='Complete',
                          leng=50)
         stroka = random.choice(slova)
@@ -74,8 +74,6 @@ if __name__ == "__main__":
 
         text += "\n"
         i += 2
-        b = i - son
-        if b > 300000000:
-            f.write(text)
-            f.close()
-            son += i
+        
+    f.write(text)
+    f.close()
