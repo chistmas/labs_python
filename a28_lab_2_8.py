@@ -4,13 +4,18 @@ def check(n):
     else:
         return print("Yes, it is")
 
-n = 1
-while n != 'exit':        
-    print("\nEnter number to be checked or exit to exit: ")
-    n = input()
-    if n == 'exit':
-        break
-    elif not n.isnumeric():
-        print("U r stupid -_-, I said number")
-    else:
-        check(n)
+def main():
+    while True:        
+        n = input("\nEnter number to be checked or exit to exit: ")
+        try:
+            if n == 'exit':
+                break
+            elif not n.isnumeric():
+                print("U r stupid -_-, I said number")
+            else:
+                check(n)
+        except ValueError:
+            print("Enter natural number Please")
+
+if __name__ == "__main__":
+    main()
