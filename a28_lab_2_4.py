@@ -14,7 +14,9 @@ def flatten_it(y):
         if hasattr(x, '__iter__') and not isinstance(x, str):  
             yield from flatten_it(x)  
         else:
-            if x.isnumeric():
+            if isinstance(x, int) or isinstance(x, float):
+                yield x
+            elif x.isnumeric():
                 yield int(x)
             elif isfloat(x):
                 yield float(x)
